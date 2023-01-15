@@ -14,7 +14,7 @@ const ProductPreview = ({ product }: PropsType) => {
   }
   return (
     <Container>
-      <Link to="">
+      <Link to={`product/${product.id}`}>
         <ImageContainer>
           <Image
             src={`${BASE_URL}${product.picture.url}`}

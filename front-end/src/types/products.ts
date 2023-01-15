@@ -1,3 +1,5 @@
+import { Dispatch, SetStateAction } from "react"
+
 export type ProductInfoType = {
   id: number
   attributes: {
@@ -21,4 +23,9 @@ export type ProductType = {
     description: string
   }
   picture: PictureType
+}
+
+export type CartType = {
+  name: string
+  // setOpenCart: Dispatch<SetStateAction<boolean>>
 }

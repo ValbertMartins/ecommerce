@@ -1,9 +1,12 @@
-import React from "react"
+import React, { useContext } from "react"
 import { Link } from "react-router-dom"
-import { CartCounter, Container, Logo, Navbar, ProfileIcon } from "./styles"
+import { Container, Logo, Navbar, ProfileIcon } from "./styles"
 import { ReactComponent as Bag } from "../../assets/svg/bag.svg"
 import { ReactComponent as Login } from "../../assets/svg/profile.svg"
+import { CartContext } from "../../context/CartContext"
 const Profile = () => {
+  const { setOpenCart } = useContext(CartContext)
+
   return (
     <Container>
       <Link to="/">
@@ -18,7 +21,10 @@ const Profile = () => {
           Login
         </Link>
 
-        <Link to="cart">
+        <Link
+          to="/"
+          onClick={() => setOpenCart(value => !value)}
+        >
           {/* <CartCounter></CartCounter> */}
           <Bag />
           Cart
