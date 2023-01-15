@@ -25,7 +25,10 @@ export type ProductType = {
   picture: PictureType
 }
 
-export type CartType = {
-  name: string
-  // setOpenCart: Dispatch<SetStateAction<boolean>>
+export type AuthUserProps = {
+  jwt: string
+  user: {
+    username: string
+    email: string
+  }
 }

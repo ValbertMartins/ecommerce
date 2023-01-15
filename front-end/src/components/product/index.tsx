@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
-import { BASE_URL, requestProduct } from "../../services/api"
-import { ProductType } from "../../types/products"
+import { BASE_URL } from "../../services/api"
+import { requestProduct } from "../../services/api_products"
+import { ProductType } from "../../types/types"
 import ProductDetails from "../productDetails"
 import { Container, ImageContainer } from "./styles"
 
@@ -16,7 +17,7 @@ const Product = () => {
   useEffect(() => {
     requestProduct(id).then(data => setProduct(data))
   }, [])
-  console.log(product)
+
   if (!product) return null
   return (
     <Container>

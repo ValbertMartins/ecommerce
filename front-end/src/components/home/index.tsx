@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
-import { requestProducts } from "../../services/api"
-import { ProductType } from "../../types/products"
+import { requestProducts } from "../../services/api_products"
+import { ProductType } from "../../types/types"
 import ProductPreview from "../productPreview"
 import { Container } from "./styles"
 
