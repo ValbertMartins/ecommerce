@@ -25,10 +25,12 @@ export type ProductType = {
   picture: PictureType
 }
 
+export type AuthUserInfoProps = {
+  username: string
+  email: string
+}
+
 export type AuthUserProps = {
   jwt: string
-  user: {
-    username: string
-    email: string
-  }
+  user: AuthUserInfoProps
 }

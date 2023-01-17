@@ -1,5 +1,7 @@
-import React, { FormEvent, useState } from "react"
-import { Link } from "react-router-dom"
+import { FormEvent, useContext, useState } from "react"
+import { Link, useNavigate } from "react-router-dom"
+import { UserContext } from "../../../context/UserContext"
+import { ErrorRequestType } from "../../../services/api"
 import { loginUser } from "../../../services/api_auth"
 import {
   ErrorMessage,
@@ -15,11 +17,19 @@ import {
 const LoginForm = () => {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
-  const [error, setError] = useState(null)
+  const [error, setError] = useState<ErrorRequestType | null>(null)
+  const { setUserAuth } = useContext(UserContext)
+  const navigate = useNavigate()
 
   async function handleLoginUser(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
-    await loginUser(email, password)
+    const [userData, error] = await loginUser(email, password)
+    if (error) return setError(error)
+    if (userData) {
+      setUserAuth(userData)
+      localStorage.setItem("jwt", userData.jwt)
+      navigate("/profile")
+    }
   }
 
   return (
@@ -42,7 +52,7 @@ const LoginForm = () => {
           />
         </label>
         <LoginButton>Login</LoginButton>
-        <ErrorMessage>{error}</ErrorMessage>
+        <ErrorMessage>{error?.message}</ErrorMessage>
       </Form>
 
       {/* <GoogleButton>Sign in with google</GoogleButton> */}

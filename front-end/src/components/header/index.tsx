@@ -7,6 +7,7 @@ import { CartContext } from "../../context/CartContext"
 import { UserContext } from "../../context/UserContext"
 const Profile = () => {
   const { setOpenCart } = useContext(CartContext)
+  const { userAuth } = useContext(UserContext)
   return (
     <Container>
       <Link to="/">
@@ -14,11 +15,11 @@ const Profile = () => {
       </Link>
 
       <Navbar>
-        <Link to="auth">
+        <Link to={userAuth ? "profile" : "auth"}>
           <ProfileIcon>
             <Login />
           </ProfileIcon>
-          Login
+          {userAuth ? userAuth.user.username : "Login"}
         </Link>
 
         <Link

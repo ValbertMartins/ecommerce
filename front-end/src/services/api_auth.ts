@@ -1,4 +1,4 @@
-import { AuthUserProps } from "../types/types"
+import { AuthUserInfoProps, AuthUserProps } from "../types/types"
 import { ErrorRequestType, request } from "./api"
 
 // {
@@ -19,7 +19,7 @@ export async function registerUser(
   email: string,
   password: string,
   username: string
-): Promise<[AuthUserProps | undefined, ErrorRequestType | undefined]> {
+): Promise<[AuthUserProps | null, ErrorRequestType | null]> {
   const [userData, error] = await request<AuthUserProps>(`/api/auth/local/register`, {
     method: "POST",
     headers: {
@@ -34,7 +34,10 @@ export async function registerUser(
   return [userData, error]
 }
 
-export async function loginUser(email: string, password: string) {
+export async function loginUser(
+  email: string,
+  password: string
+): Promise<[AuthUserProps | null, ErrorRequestType | null]> {
   const [userData, error] = await request<AuthUserProps>(`/api/auth/local`, {
     method: "POST",
     headers: {
@@ -45,5 +48,23 @@ export async function loginUser(email: string, password: string) {
       password: password,
     }),
   })
-  console.log(userData, error)
+  console.log(error, "foo")
+  return [userData, error]
+}
+
+export async function getUserAuthInfo(jwt: string): Promise<AuthUserProps | null> {
+  const [userData] = await request<AuthUserInfoProps>(`/api/users/me`, {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${jwt}`,
+    },
+  })
+  if (!userData) return null
+  console.log(userData)
+  return {
+    jwt: jwt,
+    user: {
+      ...userData,
+    },
+  }
 }
