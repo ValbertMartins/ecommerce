@@ -4,9 +4,9 @@ import { Container, Logo, Navbar, ProfileIcon } from "./styles"
 import { ReactComponent as Bag } from "../../assets/svg/bag.svg"
 import { ReactComponent as Login } from "../../assets/svg/profile.svg"
 import { CartContext } from "../../context/CartContext"
+import { UserContext } from "../../context/UserContext"
 const Profile = () => {
   const { setOpenCart } = useContext(CartContext)
-
   return (
     <Container>
       <Link to="/">

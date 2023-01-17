@@ -1,24 +1,19 @@
-import React, { FormEvent, useState } from "react"
+import { FormEvent, useState } from "react"
 import { Link } from "react-router-dom"
+import { ErrorRequestType } from "../../../services/api"
 import { registerUser } from "../../../services/api_auth"
-import {
-  Form,
-  Input,
-  LabelText,
-  LoginLink,
-  RegisterButton,
-  RegisterContainer,
-} from "./styles"
+import { Form, Input, LabelText, LoginLink, RegisterButton, RegisterContainer } from "./styles"
 
 const RegisterForm = () => {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [name, setName] = useState("")
-  const [error, setError] = useState(null)
+  const [error, setError] = useState<null | ErrorRequestType>(null)
 
   async function handleRegisterUser(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
-    await registerUser(email, password, name)
+    const [userData, error] = await registerUser(email, password, name)
+    if (error) setError(error)
   }
   return (
     <RegisterContainer>
@@ -51,14 +46,14 @@ const RegisterForm = () => {
         </label>
 
         <RegisterButton>Register</RegisterButton>
-        {error}
-        <p>
-          Already have a account?
-          <Link to="/auth">
-            <LoginLink>Login now</LoginLink>
-          </Link>
-        </p>
       </Form>
+      {error && error.message}
+      <p>
+        Already have a account?
+        <Link to="/auth">
+          <LoginLink>Login now</LoginLink>
+        </Link>
+      </p>
     </RegisterContainer>
   )
 }

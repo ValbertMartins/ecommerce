@@ -1,6 +1,6 @@
 export const BASE_URL: string = "http://localhost:1337"
 
-type ErrorRequestType = {
+export type ErrorRequestType = {
   status: number
   name: string
   message: string
@@ -9,9 +9,9 @@ type ErrorRequestType = {
 export async function request<T>(
   endpoint: string,
   options?: object
-): Promise<[T, ErrorRequestType]> {
-  let data!: T
-  let error!: ErrorRequestType
+): Promise<[T | undefined, ErrorRequestType | undefined]> {
+  let data: T | undefined
+  let error: ErrorRequestType | undefined
   try {
     const response = await fetch(`${BASE_URL}${endpoint}`, options)
 
@@ -24,6 +24,7 @@ export async function request<T>(
   } catch (newError: any) {
     error = JSON.parse(newError.message)
   } finally {
+    console.log(error)
     return [data, error]
   }
 }

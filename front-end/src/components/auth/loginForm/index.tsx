@@ -1,5 +1,6 @@
 import React, { FormEvent, useState } from "react"
 import { Link } from "react-router-dom"
+import { loginUser } from "../../../services/api_auth"
 import {
   ErrorMessage,
   Form,
@@ -16,7 +17,10 @@ const LoginForm = () => {
   const [password, setPassword] = useState("")
   const [error, setError] = useState(null)
 
-  async function handleLoginUser(event: FormEvent<HTMLFormElement>) {}
+  async function handleLoginUser(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault()
+    await loginUser(email, password)
+  }
 
   return (
     <LoginContainer>
