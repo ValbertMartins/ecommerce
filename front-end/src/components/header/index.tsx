@@ -1,13 +1,15 @@
 import React, { useContext } from "react"
 import { Link } from "react-router-dom"
-import { Container, Logo, Navbar, ProfileIcon } from "./styles"
+import { CartCounter, Container, Logo, Navbar, ProfileIcon } from "./styles"
 import { ReactComponent as Bag } from "../../assets/svg/bag.svg"
 import { ReactComponent as Login } from "../../assets/svg/profile.svg"
 import { CartContext } from "../../context/CartContext"
 import { UserContext } from "../../context/UserContext"
 const Profile = () => {
-  const { setOpenCart } = useContext(CartContext)
+  const { setOpenCart, itensCart } = useContext(CartContext)
   const { userAuth } = useContext(UserContext)
+
+  const totalItens = itensCart.length
   return (
     <Container>
       <Link to="/">
@@ -26,7 +28,7 @@ const Profile = () => {
           to="/"
           onClick={() => setOpenCart(value => !value)}
         >
-          {/* <CartCounter></CartCounter> */}
+          {totalItens > 0 && <CartCounter>{totalItens}</CartCounter>}
           <Bag />
           Cart
         </Link>

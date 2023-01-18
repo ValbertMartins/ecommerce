@@ -24,7 +24,6 @@ export async function request<T>(
   } catch (newError: any) {
     error = JSON.parse(newError.message)
   } finally {
-    console.log(error)
     return [data, error]
   }
 }

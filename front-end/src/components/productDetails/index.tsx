@@ -1,10 +1,12 @@
 import { useContext } from "react"
 import { CartContext } from "../../context/CartContext"
-import { ProductInfoType } from "../../types/types"
+import { ProductInfoType, ProductType } from "../../types/types"
 import { Button, Description, DetailsContainer, QuantityContainer, Title } from "./styles"
 
-const ProductDetails = ({ product }: { product: ProductInfoType }) => {
-  const { decreaseQuantity, increaseQuantity, productQuantity } = useContext(CartContext)
+const ProductDetails = ({ product }: { product: ProductType }) => {
+  const { decreaseQuantity, increaseQuantity, productQuantity, addToCart } =
+    useContext(CartContext)
+
   return (
     <div>
       <DetailsContainer>
@@ -16,7 +18,9 @@ const ProductDetails = ({ product }: { product: ProductInfoType }) => {
           {productQuantity}
           <button onClick={increaseQuantity}>+</button>
         </QuantityContainer>
-        <Button>Add To Cart</Button>
+        <Button onClick={() => addToCart({ ...product, quantity: productQuantity })}>
+          Add To Cart
+        </Button>
       </DetailsContainer>
     </div>
   )
