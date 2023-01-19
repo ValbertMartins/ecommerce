@@ -76,15 +76,17 @@ export const QuantityContainer = styled.div`
   button {
     width: 1rem;
     height: 1rem;
-    border-radius: 50%;
+
     background-color: #413e3e;
     border: none;
     outline: none;
+    border-radius: 50%;
     color: #fff;
     cursor: pointer;
     display: inline-flex;
     justify-content: center;
     align-items: center;
+    padding-bottom: 0.1rem;
     margin: 0rem 0.4rem;
   }
   ::before {

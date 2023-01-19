@@ -28,7 +28,7 @@ const LoginForm = () => {
     if (userData) {
       setUserAuth(userData)
       localStorage.setItem("jwt", userData.jwt)
-      navigate("/profile")
+      navigate("/")
     }
   }
 

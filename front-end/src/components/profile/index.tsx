@@ -10,6 +10,7 @@ const Profile = () => {
     localStorage.removeItem("jwt")
     navigate("/")
   }
+
   return (
     <div>
       <button onClick={handleLogout}>Sair</button>

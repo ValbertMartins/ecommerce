@@ -24,14 +24,16 @@ const Profile = () => {
           {userAuth ? userAuth.user.username : "Login"}
         </Link>
 
-        <Link
-          to="/"
-          onClick={() => setOpenCart(value => !value)}
-        >
-          {totalItens > 0 && <CartCounter>{totalItens}</CartCounter>}
-          <Bag />
-          Cart
-        </Link>
+        {userAuth && (
+          <Link
+            to="/"
+            onClick={() => setOpenCart(value => !value)}
+          >
+            {totalItens > 0 && <CartCounter>{totalItens}</CartCounter>}
+            <Bag />
+            Cart
+          </Link>
+        )}
       </Navbar>
     </Container>
   )
