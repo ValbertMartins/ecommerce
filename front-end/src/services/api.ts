@@ -14,6 +14,7 @@ export async function request<T>(
   let error!: ErrorRequestType | null
   try {
     const response = await fetch(`${BASE_URL}${endpoint}`, options)
+
     if (!response.ok) {
       const newError = await response.json()
       throw new Error(JSON.stringify(newError.error))

@@ -51,3 +51,6 @@ export const Button = styled.button`
   border-radius: 3px;
   cursor: pointer;
 `
+export const ErrorMessage = styled.p`
+  color: red;
+`

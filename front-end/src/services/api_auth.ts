@@ -33,7 +33,6 @@ export async function getUserAuthInfo(jwt: string): Promise<AuthUserProps | null
     },
   })
   if (!userData) return null
-  console.log(userData)
   return {
     jwt: jwt,
     user: {

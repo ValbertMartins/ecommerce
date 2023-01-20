@@ -8,6 +8,7 @@ import Product from "./components/product/index.jsx"
 import Auth from "./components/auth/index.jsx"
 import { CartProvider } from "./context/CartContext.js"
 import { UserContextProvider } from "./context/UserContext.js"
+import Order from "./components/order/index.js"
 
 function App() {
   return (
@@ -33,6 +34,10 @@ function App() {
             <Route
               path="product/:id"
               element={<Product />}
+            />
+            <Route
+              path="order/*"
+              element={<Order />}
             />
           </Routes>
         </CartProvider>

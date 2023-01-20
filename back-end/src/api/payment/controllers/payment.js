@@ -2,7 +2,6 @@ const stripe = require("stripe")(process.env.API_TOKEN_STRIPE_SECRET);
 
 module.exports = {
   async handlePayment(ctx, next) {
-    console.log(ctx.request.headers);
     const productList = ctx.request.body.map((item) => {
       return {
         price_data: {
@@ -20,12 +19,13 @@ module.exports = {
       const session = await stripe.checkout.sessions.create({
         line_items: productList,
         mode: "payment",
-        success_url: `${ctx.request.headers.origin}`,
+        success_url: `${ctx.request.headers.origin}/order/sucess?session_id={CHECKOUT_SESSION_ID}`,
         cancel_url: `${ctx.request.headers.origin}`,
       });
+
       ctx.response.send(session);
     } catch (error) {
-      ctx.response.send(error);
+      ctx.response.status(500);
     }
   },
 };

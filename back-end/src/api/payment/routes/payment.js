@@ -5,5 +5,13 @@ module.exports = {
       path: "/payments",
       handler: "payment.handlePayment",
     },
+    {
+      method: "GET",
+      path: "/order",
+      handler: "order.handleOrder",
+      // config: {
+      //   auth: false,
+      // },
+    },
   ],
 };
