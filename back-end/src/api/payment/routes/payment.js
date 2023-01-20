@@ -9,9 +9,9 @@ module.exports = {
       method: "GET",
       path: "/order",
       handler: "order.handleOrder",
-      // config: {
-      //   auth: false,
-      // },
+      config: {
+        auth: false,
+      },
     },
   ],
 };

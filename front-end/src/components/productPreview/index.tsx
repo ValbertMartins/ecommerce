@@ -1,4 +1,3 @@
-import { ReactEventHandler } from "react"
 import { Link } from "react-router-dom"
 import { BASE_URL } from "../../services/api"
 import { ProductType } from "../../types/types"
@@ -22,7 +21,7 @@ const ProductPreview = ({ product }: PropsType) => {
           />
         </ImageContainer>
         <Name>{product.attributes.name}</Name>
-        <Price>{product.attributes.price}</Price>
+        <Price>R${product.attributes.price}</Price>
       </Link>
     </Container>
   )

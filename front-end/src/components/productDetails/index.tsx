@@ -1,6 +1,8 @@
+import Skeleton from "react-loading-skeleton"
+import "react-loading-skeleton/dist/skeleton.css"
 import { useContext } from "react"
 import { CartContext } from "../../context/CartContext"
-import { ProductInfoType, ProductType } from "../../types/types"
+import { ProductType } from "../../types/types"
 import { Button, Description, DetailsContainer, QuantityContainer, Title } from "./styles"
 
 const ProductDetails = ({ product }: { product: ProductType }) => {
@@ -10,8 +12,15 @@ const ProductDetails = ({ product }: { product: ProductType }) => {
   return (
     <div>
       <DetailsContainer>
-        <Title>{product.attributes.name}</Title>
-        <Description>{product.attributes.description}</Description>
+        <Title>{product.attributes.name || <Skeleton height={30} />}</Title>
+        <Description>
+          {product.attributes.description || (
+            <Skeleton
+              height={25}
+              count={10}
+            />
+          )}
+        </Description>
         <QuantityContainer>
           Quantity:
           <button onClick={decreaseQuantity}>-</button>

@@ -32,7 +32,7 @@ const ItemCart = ({ item }: { item: ItemCartType }) => {
       </ImageContainer>
       <div>
         <Name>{item.attributes.name}</Name>
-        <Price>${item.attributes.price}</Price>
+        <Price>R${item.attributes.price}</Price>
         <QuantityContainer>
           <button onClick={decreaseQuantityItemInCart}>-</button>
           {item.quantity}

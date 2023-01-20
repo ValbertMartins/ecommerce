@@ -43,7 +43,7 @@ const Cart = () => {
           )
         })}
 
-        <b>subtotal ${totalCartPrice}</b>
+        <b>subtotal R${totalCartPrice}</b>
         {itensCart.length > 0 && <Button onClick={handleClickPayment}>Purchase</Button>}
         <ErrorMessage>{errorOpenCheckout?.message}</ErrorMessage>
       </ContainerContent>

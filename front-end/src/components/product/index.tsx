@@ -27,6 +27,7 @@ const Product = () => {
           src={`${BASE_URL}${product.picture.url}`}
         />
       </ImageContainer>
+
       <ProductDetails product={product} />
     </Container>
   )

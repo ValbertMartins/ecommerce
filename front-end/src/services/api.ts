@@ -19,6 +19,7 @@ export async function request<T>(
       const newError = await response.json()
       throw new Error(JSON.stringify(newError.error))
     }
+
     const json = await response.json()
     json.data ? (data = json.data) : (data = json)
     error = null
