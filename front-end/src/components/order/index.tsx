@@ -21,7 +21,7 @@ const Order = () => {
 
   useEffect(() => {
     if (userAuth && sessionId) {
-      handleOrderPayment(sessionId).then(data => setOrderDetails(data))
+      handleOrderPayment(sessionId, userAuth.jwt).then(data => setOrderDetails(data))
     }
   }, [userAuth])
 

@@ -8,6 +8,7 @@ module.exports = {
           currency: "brl",
           product_data: {
             name: item.attributes.name,
+            images: [item.picture.url],
           },
           unit_amount: item.attributes.price * 100,
         },

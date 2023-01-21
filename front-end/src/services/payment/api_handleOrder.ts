@@ -23,9 +23,14 @@ export type OrderDetailsType = {
   }
 }
 
-export async function handleOrderPayment(session_id: string) {
+export async function handleOrderPayment(session_id: string, jwt: string) {
   const [orderDetails, error] = await request<OrderDetailsType>(
-    `/api/order/?session_id=${session_id}`
+    `/api/order/?session_id=${session_id}`,
+    {
+      headers: {
+        Authorization: `Bearer ${jwt}`,
+      },
+    }
   )
   console.log(orderDetails)
   return orderDetails

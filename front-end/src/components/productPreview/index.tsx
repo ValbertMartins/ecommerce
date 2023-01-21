@@ -16,7 +16,7 @@ const ProductPreview = ({ product }: PropsType) => {
       <Link to={`product/${product.id}`}>
         <ImageContainer>
           <Image
-            src={`${BASE_URL}${product.picture.url}`}
+            src={product.picture.url}
             onLoad={handleLoadImage}
           />
         </ImageContainer>

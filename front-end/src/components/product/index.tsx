@@ -24,7 +24,7 @@ const Product = () => {
       <ImageContainer>
         <img
           onLoad={handleImageLoad}
-          src={`${BASE_URL}${product.picture.url}`}
+          src={product.picture.url}
         />
       </ImageContainer>
 

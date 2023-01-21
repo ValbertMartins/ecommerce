@@ -2,8 +2,8 @@ import { PictureType, ProductInfoType, ProductType } from "../types/types"
 import { request } from "./api"
 
 function mergePictureAndProducts(
-  products: ProductInfoType[] | undefined,
-  pictureList: PictureType[] | undefined
+  products: ProductInfoType[] | null,
+  pictureList: PictureType[] | null
 ): ProductType[] | null {
   if (!products || !pictureList) {
     return null
@@ -20,6 +20,7 @@ function mergePictureAndProducts(
 export async function requestProducts(): Promise<ProductType[] | null> {
   const [products, error] = await request<ProductInfoType[]>(`/api/products`)
   const [pictureList] = await request<PictureType[]>(`/api/upload/files`)
+  console.log(pictureList)
   if (error) return null
   return mergePictureAndProducts(products, pictureList)
 }

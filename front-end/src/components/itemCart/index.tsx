@@ -26,7 +26,7 @@ const ItemCart = ({ item }: { item: ItemCartType }) => {
     <ItemContainer key={item.id}>
       <ImageContainer>
         <img
-          src={`${BASE_URL}${item.picture.url}`}
+          src={item.picture.url}
           alt={item.attributes.name}
         />
       </ImageContainer>
