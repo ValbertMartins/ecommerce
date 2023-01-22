@@ -1,7 +1,7 @@
 import { useContext } from "react"
 import { CartContext, ItemCartType } from "../../context/CartContext"
-import { BASE_URL } from "../../services/api"
 import { ImageContainer, ItemContainer, Name, Price, QuantityContainer } from "./styles"
+import { motion } from "framer-motion"
 
 const ItemCart = ({ item }: { item: ItemCartType }) => {
   const { setItensCart, itensCart } = useContext(CartContext)

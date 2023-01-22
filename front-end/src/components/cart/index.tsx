@@ -6,7 +6,7 @@ import { handlePayment } from "../../services/payment/api_handlePayment"
 import { ErrorMessage } from "../auth/loginForm/styles"
 import ItemCart from "../itemCart"
 import { Button, Container, ContainerContent } from "./styles"
-
+import { motion, AnimatePresence } from "framer-motion"
 const Cart = () => {
   const { setOpenCart, openCart, itensCart } = useContext(CartContext)
   const { userAuth } = useContext(UserContext)
@@ -34,15 +34,23 @@ const Cart = () => {
   return (
     <Container onClick={handleOpenModal}>
       <ContainerContent>
-        {itensCart.map(item => {
-          return (
-            <ItemCart
-              item={item}
-              key={item.id}
-            />
-          )
-        })}
-
+        <AnimatePresence mode="popLayout">
+          {itensCart.map(item => {
+            return (
+              <motion.div
+                layout
+                key={item.id}
+                className="box"
+                initial={{ opacity: 0, scale: 0.5 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ scale: 0.8, opacity: 0 }}
+                transition={{ type: "spring" }}
+              >
+                <ItemCart item={item} />
+              </motion.div>
+            )
+          })}
+        </AnimatePresence>
         <b>subtotal R${totalCartPrice}</b>
         {itensCart.length > 0 && <Button onClick={handleClickPayment}>Purchase</Button>}
         <ErrorMessage>{errorOpenCheckout?.message}</ErrorMessage>

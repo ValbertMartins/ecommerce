@@ -17,8 +17,6 @@ export const ItemContainer = styled.div`
   display: flex;
   justify-content: space-around;
   align-items: center;
-  /* width:  336px;
-  height: 160px; */
   padding: 5%;
   margin: 1rem auto;
   transform: scale(1);

@@ -17,7 +17,8 @@ export const Logo = styled.span`
 `
 export const Navbar = styled.nav`
   display: flex;
-  a {
+  a,
+  article {
     font-size: 0.8rem;
     display: flex;
     flex-direction: column;
@@ -27,6 +28,7 @@ export const Navbar = styled.nav`
     margin: 0rem 2rem;
     font-weight: bold;
     position: relative;
+    cursor: pointer;
   }
   svg {
     font-size: 1.5rem;

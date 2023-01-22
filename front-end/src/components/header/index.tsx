@@ -25,14 +25,11 @@ const Profile = () => {
         </Link>
 
         {userAuth && (
-          <Link
-            to="/"
-            onClick={() => setOpenCart(value => !value)}
-          >
+          <article onClick={() => setOpenCart(value => !value)}>
             {totalItens > 0 && <CartCounter>{totalItens}</CartCounter>}
             <Bag />
             Cart
-          </Link>
+          </article>
         )}
       </Navbar>
     </Container>

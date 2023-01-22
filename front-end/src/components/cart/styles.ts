@@ -7,11 +7,7 @@ export const AnimationEnterCart = keyframes`
   }
   
 `
-export const AnimateShowModalBackground = keyframes`
-  to { 
-     opacity: 1;
-  }
-`
+
 export const Container = styled.section`
   z-index: 10;
   height: 100%;
@@ -19,18 +15,17 @@ export const Container = styled.section`
   width: 100vw;
   right: 0;
   top: 0;
-  opacity: 0;
+  opacity: 1;
   background-color: rgba(0, 0, 0, 0.4);
   display: flex;
   flex-direction: row-reverse;
-  animation: ${AnimateShowModalBackground} 0.5s ease forwards;
 `
 export const ContainerContent = styled.article`
   ::-webkit-scrollbar {
     display: none;
   }
   height: 100%;
-  width: 0;
+  width: 20vw;
   background-color: #f1f1f1;
   animation: ${AnimationEnterCart} 0.3s ease forwards;
   overflow-y: scroll;
