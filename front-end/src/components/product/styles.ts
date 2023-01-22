@@ -21,6 +21,9 @@ export const ImageContainer = styled.article`
     width: 17rem;
     margin: 0 auto;
   }
+  @media (max-width: 380px) {
+    width: 80%;
+  }
   img {
     width: 100%;
     height: 100%;

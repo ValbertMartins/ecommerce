@@ -8,7 +8,7 @@ import {
   ContainerOrderDetails,
   Title,
 } from "./styles"
-import { useSearchParams } from "react-router-dom"
+import { useNavigate, useSearchParams } from "react-router-dom"
 import { UserContext } from "../../context/UserContext"
 import { handleOrderPayment, OrderDetailsType } from "../../services/payment/api_handleOrder"
 import ConfirmedIcon from "../../assets/svg/verified.svg"
@@ -16,7 +16,7 @@ const Order = () => {
   const [params] = useSearchParams()
   const [orderDetails, setOrderDetails] = useState<OrderDetailsType | null>(null)
   const sessionId = params.get("session_id")
-
+  const navigate = useNavigate()
   const { userAuth } = useContext(UserContext)
 
   useEffect(() => {
@@ -49,7 +49,7 @@ const Order = () => {
         </Contact>
       </ContainerOrderDetails>
       <ConfirmedImg src={ConfirmedIcon} />
-      <Button>Go to home</Button>
+      <Button onClick={() => navigate("/")}>Go to home</Button>
     </Container>
   )
 }

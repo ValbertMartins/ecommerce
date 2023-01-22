@@ -8,8 +8,20 @@ module.exports = {
       expand: ["line_items"],
     });
 
-    const { customer_details, status, amount_total, line_items } = order;
+    const {
+      customer_details,
+      status,
+      amount_total,
+      line_items,
+      payment_intent,
+    } = order;
     console.log(order);
-    ctx.response.send({ customer_details, status, amount_total, line_items });
+    ctx.response.send({
+      customer_details,
+      status,
+      amount_total,
+      line_items,
+      payment_intent,
+    });
   },
 };

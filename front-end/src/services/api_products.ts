@@ -20,7 +20,6 @@ function mergePictureAndProducts(
 export async function requestProducts(): Promise<ProductType[] | null> {
   const [products, error] = await request<ProductInfoType[]>(`/api/products`)
   const [pictureList] = await request<PictureType[]>(`/api/upload/files`)
-  console.log(pictureList)
   if (error) return null
   return mergePictureAndProducts(products, pictureList)
 }

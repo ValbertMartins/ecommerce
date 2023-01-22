@@ -21,10 +21,11 @@ export type OrderDetailsType = {
       description: string
     }[]
   }
+  payment_intent: string
 }
 
 export async function handleOrderPayment(session_id: string, jwt: string) {
-  const [orderDetails, error] = await request<OrderDetailsType>(
+  const [orderDetails] = await request<OrderDetailsType>(
     `/api/order/?session_id=${session_id}`,
     {
       headers: {
@@ -32,6 +33,24 @@ export async function handleOrderPayment(session_id: string, jwt: string) {
       },
     }
   )
+  if (!orderDetails) return null
+  storeOrderInDB(orderDetails, jwt)
   console.log(orderDetails)
   return orderDetails
+}
+
+async function storeOrderInDB(orderDetails: OrderDetailsType, jwt: string) {
+  await request(`/api/purchases`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${jwt}`,
+    },
+    body: JSON.stringify({
+      data: {
+        purchase_id: orderDetails.payment_intent,
+        total_amount: orderDetails.amount_total,
+      },
+    }),
+  })
 }

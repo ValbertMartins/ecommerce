@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "purchases",
+  "info": {
+    "singularName": "purchase",
+    "pluralName": "purchases",
+    "displayName": "purchase",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "purchase_id": {
+      "type": "string",
+      "required": true
+    },
+    "user_id": {
+      "type": "biginteger",
+      "required": false
+    },
+    "total_amount": {
+      "type": "biginteger"
+    }
+  }
+}

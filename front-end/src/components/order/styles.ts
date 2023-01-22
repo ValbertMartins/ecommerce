@@ -20,6 +20,7 @@ export const ContainerOrderDetails = styled.article`
   margin: 1rem 0;
   display: flex;
   flex-direction: column;
+  width: 100%;
   justify-content: center;
   @media (max-width: 300px) {
     font-size: 0.8rem;
